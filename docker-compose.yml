@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+    app:
+        container_name: aflafrettir-web
+        build: 
+            context: .
+            dockerfile:
+                Dockerfile
+        expose: 
+            - 3000
+        ports: 
+            - 3000:3000
+        volumes:
+            - ./:/src/aflafrettir-web:delegated
+        restart: on-failure
+        tty: true
+        networks:
+            - fullstack
+    
+networks:
+    fullstack:
+        driver: bridge
+volumes:
+    app_data:

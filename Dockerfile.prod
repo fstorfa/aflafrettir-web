@@ -1,0 +1,16 @@
+FROM node:14.0-buster as build
+
+WORKDIR /src/aflafrettir-web/
+COPY package.json yarn.lock /src/aflafrettir-web/
+RUN yarn install
+
+COPY ./ /src/aflafrettir-web
+RUN yarn build
+
+FROM nginx:1.17
+
+COPY --from=build /src/aflafrettir-web/build /usr/share/nginx/html
+COPY nginx/nginx.conf /etc/nginx/conf.d/
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
