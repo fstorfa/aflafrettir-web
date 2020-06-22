@@ -1,6 +1,9 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const primaryColor = "#77CCDD";
+export const
+    primaryColor = "#77CCDD",
+    fbBlue ="#3B5998";
+
 const theme = createMuiTheme({
   palette: {
       primary: {
@@ -9,4 +12,4 @@ const theme = createMuiTheme({
   },
 });
 
-export default theme
+export default theme;
